@@ -154,8 +154,8 @@ async def on_message(msg):
 
 
                                           Marriage = Image.open("bullying.jpg")
-                                          asset1 = person1.avatar_url_as(size=128)
-                                          data1 = BytesIO(await asset1.read())
+                                          asset1 = person1.display_avatar.with_size(128)  # Updated line
+                                          data1 = BytesIO(await asset1.read())  # Updated line
                                           pfp1 = Image.open(data1)
                                           pfp1 = pfp1.resize((140,140))
                                           bigsize = (pfp1.size[0] * 3, pfp1.size[1] * 3)
