@@ -21,15 +21,15 @@ client = discord.Client(intents=intents)
 async def on_ready():
     await client.change_presence(activity=discord.Game('Be a pookie please'))
     print("running")
+    timecounting.start()  # Start the loop here
     keep_alive()
 
 @client.event 
 async def on_member_join(member):
-     channel=client.get_channel(1205471447603089409)
-     emb=discord.Embed(title="NEW MEMBER",description=f"Thanks {member.mention} for joining!")
+     channel = client.get_channel(1205471447603089409)
+     emb = discord.Embed(title="NEW MEMBER", description=f"Thanks {member.mention} for joining!")
      await channel.send(embed=emb)
      await channel.send(f"Welcome to the server {member.mention}! Tell us your age and tell us where ur from you ape.")
-
 
 async def daily_job():
     print("Preparing...")
@@ -64,15 +64,10 @@ async def timecounting():
         await daily_job()
         print(3)
 
-def trigger():
-    timecounting.start()
-
-trigger()
-
-@client.event
 async def sending(messagetosend):
     channel = client.get_channel(1205471447603089409)
     await channel.send(messagetosend)
+
 
 @client.event
 async def on_message(msg):
