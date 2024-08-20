@@ -8,7 +8,8 @@ import time
 import os
 from keep_alive import keep_alive
 from PIL import Image, ImageDraw
-
+import textblob
+from textblob import TextBlob
 
 watch_list = []
 
@@ -74,7 +75,16 @@ async def on_message(msg):
     newmessage = msg.content.lower()
     if msg.author == client.user:
         return
-
+        
+    if client.user.mentioned_in(msg):
+        blob = TextBlob(msg.content)
+        sentiment = blob.sentiment.polarity
+        if sentiment <0.1 :
+            await msg.reply("☹️")
+        if sentiment > 0.1:
+            await msg.reply("😊")
+        else: 
+            await msg.reply("?")
     
     Mentionedlen = len(msg.raw_mentions) + 1
     found = False
