@@ -3,3 +3,5 @@ Flask==3.0.3
 numpy==2.1.0
 Pillow==10.4.0
 schedule==1.2.2
+textblob==0.8.0
+nltk==3.9.1
