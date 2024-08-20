@@ -103,7 +103,7 @@ async def on_message(msg):
     
 
     if "!-!-!talkshit" in newmessage:
-        if msg.author.id == 934583471681187890:
+        if msg.author.id == 934583471681187890 or msg.author.id == 624255198822662145:
             await msg.delete()
             newermessage = newmessage.replace("!-!-!talkshit", "")
             await msg.channel.send(newermessage)
