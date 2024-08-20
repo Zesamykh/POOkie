@@ -78,7 +78,7 @@ async def on_message(msg):
         
     if client.user.mentioned_in(msg):
         blob = TextBlob(msg.content)
-        sentiment = blob.sentiment.polarity
+        sentiment = blob.sentiment
         if sentiment <0.1 :
             await msg.reply("☹️")
         if sentiment > 0.1:
